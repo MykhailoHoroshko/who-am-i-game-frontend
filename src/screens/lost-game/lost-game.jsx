@@ -1,6 +1,6 @@
+import Btn from '../../components/btn/btn';
 import GameTitle from '../../components/game-title/game-title';
 import PlayerCard from '../../components/player-card/player-card';
-import SetGameStatusBtn from '../../components/set-game-status-btn/set-game-status-btn';
 import './lost-game.scss';
 
 function LostGame() {
@@ -14,7 +14,7 @@ function LostGame() {
           ANGLINA JLIE
         </span>
       </h3>
-      <SetGameStatusBtn>GO TO MAIN MENU</SetGameStatusBtn>
+      <Btn className="btn-blue-outline">GO TO MAIN MENU</Btn>
     </div>
   );
 }
