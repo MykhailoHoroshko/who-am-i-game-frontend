@@ -1,5 +1,5 @@
-import SetGameStatusBtn from '../../components/set-game-status-btn/set-game-status-btn';
 import GameTitle from '../../components/game-title/game-title';
+import Btn from '../../components/btn/btn';
 import './home.scss';
 
 function Homepage() {
@@ -11,7 +11,7 @@ function Homepage() {
       <span className="homepage__players_online">
         {playersNumber} {playersNumber > 1 ? 'Players' : 'Player'} Online
       </span>
-      <SetGameStatusBtn>PLAY QUICK GAME</SetGameStatusBtn>
+      <Btn className="btn-blue-outline">PLAY QUICK GAME</Btn>
     </div>
   );
 }
