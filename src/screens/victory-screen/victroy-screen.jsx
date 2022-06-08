@@ -1,6 +1,6 @@
+import Btn from '../../components/btn/btn';
 import GameTitle from '../../components/game-title/game-title';
 import PlayerCard from '../../components/player-card/player-card';
-import SetGameStatusBtn from '../../components/set-game-status-btn/set-game-status-btn';
 import './victory-screen.scss';
 
 function Victory() {
@@ -11,7 +11,7 @@ function Victory() {
       <h3 className="victory-screen__message">
         CONGRATULATIONS. YOU HAVE WON THE GAME
       </h3>
-      <SetGameStatusBtn>GO TO MAIN MENU</SetGameStatusBtn>
+      <Btn className="btn-blue-outline">GO TO MAIN MENU</Btn>
     </div>
   );
 }
