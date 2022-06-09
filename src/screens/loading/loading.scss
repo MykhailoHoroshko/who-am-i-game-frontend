@@ -10,7 +10,13 @@
 }
 
 .loading {
-  @include message-screen;
+  background-color: $primary-background-blue;
+
+  &__wrapper {
+    @include message-screen;
+    width: 620px;
+    margin: 0 auto;
+  }
 
   &__waiting-message {
     max-width: 900px;
@@ -25,5 +31,10 @@
     font-weight: 900;
     font-size: 24px;
     color: $btn-green;
+  }
+
+  &__btn-wrap {
+    width: 100%;
+    padding-top: 32px;
   }
 }
