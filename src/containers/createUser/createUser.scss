@@ -1,6 +1,6 @@
 @import '../../styles/colors.scss';
 
-.input-player {
+.create-user {
   background: $secondary-background-blue;
   display: flex;
   flex-direction: column;
@@ -8,13 +8,13 @@
   border-radius: 8px;
   padding: 24px;
 
-  .player-card-wrapp {
+  &__wrapp {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
   }
 
-  .btn-wrapp {
+  &__btns {
     display: flex;
     flex-direction: column;
     gap: 8px;

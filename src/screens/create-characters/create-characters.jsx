@@ -1,10 +1,10 @@
 import MainLayout from '../../components/main-layout/main-layout';
-import InputPlayer from '../../containers/input-player/input-player';
+import CreateUser from '../../containers/createUser/createUser';
 
 function InputCharacter() {
   return (
     <MainLayout timer>
-      <InputPlayer />
+      <CreateUser />
     </MainLayout>
   );
 }
