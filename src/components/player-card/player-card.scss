@@ -57,12 +57,12 @@
   border-radius: 200px;
 }
 
-.dont-know {
+.player-status__dont-know {
   background-image: url(../../assets/svg/question-mark.svg);
 }
-.yes {
+.player-status__yes {
   background-image: url(../../assets/svg/check.svg);
 }
-.no {
+.player-status__no {
   background-image: url(../../assets/svg/x.svg);
 }

@@ -7,25 +7,25 @@ const users = [
     avatar: 'avatar01',
     name: 'GreenDean',
     character: 'This is you',
-    userStatus: 'yes',
+    userStatus: 'player-status__yes',
   },
   {
     avatar: 'avatar02',
     name: 'Khalilormous',
     character: undefined,
-    userStatus: 'no',
+    userStatus: 'player-status__no',
   },
   {
     avatar: 'avatar03',
     name: 'KayPee',
     character: undefined,
-    userStatus: 'dont-know',
+    userStatus: 'player-status__dont-know',
   },
   {
     avatar: 'avatar04',
     name: 'Ted_Read',
     character: undefined,
-    userStatus: 'dont-know',
+    userStatus: 'player-status__dont-know',
   },
 ];
 
