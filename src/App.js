@@ -6,6 +6,7 @@ import LostGame from './screens/lost-game/lost-game';
 import Victory from './screens/victory-screen/victroy-screen';
 import InactivityKick from './screens/inactiviy-kick/inactivity-kick';
 import Lobby from './screens/lobby/lobby';
+import Login from './screens/login/login';
 import './App.scss';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="defeat" element={<LostGame />} />
         <Route path="victory" element={<Victory />} />
         <Route path="inactive" element={<InactivityKick />} />
+        <Route path="login" element={<Login />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>

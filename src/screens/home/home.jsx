@@ -1,19 +1,17 @@
 import GameTitle from '../../components/game-title/game-title';
 import Btn from '../../components/btn/btn';
-import { useNavigate } from 'react-router-dom';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
+import PlayersOnline from '../../components/players-online/players-online';
+import { useNavigate } from 'react-router-dom';
 import './home.scss';
 
 function Homepage() {
   const navigate = useNavigate();
-  const playersNumber = 97;
 
   return (
     <ScreenWrapper>
       <GameTitle />
-      <span className="players-online">
-        {playersNumber} {playersNumber > 1 ? 'Players' : 'Player'} Online
-      </span>
+      <PlayersOnline playersNumber={97} />
       <Btn
         className={'btn-blue-outline'}
         onClick={() => {
