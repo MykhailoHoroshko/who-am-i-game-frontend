@@ -3,11 +3,22 @@ import Btn from '../../components/btn/btn';
 import Timer from '../../components/timer/timer';
 import LeaveGameModal from '../../components/modals/leave-game/leave-game';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import GameDataContext from '../../contexts/game-data-context';
+import { findGameById } from '../../services/games-service';
 import './loading.scss';
 
 function Loading() {
+  const { gameData, setGameData, playerId } = useContext(GameDataContext);
   const [modalActive, setModalActive] = useState(false);
+
+  useEffect(() => {
+    const checkStatus = setTimeout(async () => {
+      setGameData(await findGameById(playerId, gameData.data.id));
+    }, 1000);
+
+    return () => clearTimeout(checkStatus);
+  });
 
   return (
     <ScreenWrapper>

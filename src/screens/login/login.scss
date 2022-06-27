@@ -1,1 +1,15 @@
 @import '../../styles/colors';
+
+.demarcation-line {
+    height: 2px;
+    width: 405px;
+    background-color: $modals-background;
+    border-radius: 200px;
+    margin: 32px 0px 32px 0px;
+}
+
+.__or-mark {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.5;
+}

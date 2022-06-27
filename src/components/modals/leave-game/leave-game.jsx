@@ -1,7 +1,10 @@
 import { useNavigate } from 'react-router-dom';
+import GameDataContext from '../../../contexts/game-data-context';
+import { useContext } from 'react';
 import './leave-game.scss';
 
 function LeaveGameModal({ showModal, setModalActive }) {
+  const { resetData } = useContext(GameDataContext);
   const navigate = useNavigate();
 
   if (!showModal) {
@@ -12,7 +15,8 @@ function LeaveGameModal({ showModal, setModalActive }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        navigate('../');
+        resetData();
+        navigate('/');
       }}
       className="modal-container"
     >
