@@ -20,7 +20,7 @@ function UsersContainer({ mode, currentPlayer, players }) {
       {currentPlayer && (
         <PlayerCard
           className="in-users-container"
-          avatarClassName={'avatar01'}
+          avatarClassName={currentPlayer.avatar}
           name={currentPlayer.player.name}
           isYou
         />
@@ -33,7 +33,7 @@ function UsersContainer({ mode, currentPlayer, players }) {
               className="in-users-container"
               key={player.player.id}
               name={player.player.name}
-              avatarClassName={`avatar0${index + 2}`}
+              avatarClassName={player.avatar}
               assignedCharacter={player.player.character}
             />
           ))

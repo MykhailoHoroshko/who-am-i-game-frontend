@@ -1,70 +1,23 @@
 @import '../../../styles/colors.scss';
 @import '../../../styles/mixins';
 
-@mixin selector-btn {
-  width: 100%;
-  height: 100%;
-  max-width: 344px;
-  max-height: 70px;
-  font-size: 16px;
-  font-weight: 900;
-  padding: 24px 0px 24px 0px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 .modal-container {
-  width: 100%;
-  height: 100%;
-  max-width: 800px;
-  max-height: 279px;
-  background-color: $modals-background;
-  border-radius: 6px;
-  filter: drop-shadow(0 0 0.75rem grey);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: $font-black;
-  z-index: 1;
+  @include modal-container;
 
   &__title-container {
-    margin-top: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include modal-title-container;
   }
 
   &__title {
-    font-weight: 900;
-    font-size: 32px;
-    line-height: 38px;
-    margin: 0px 0px 0px 40px;
+    @include font-big;
   }
 
   &__cross-btn {
-    @include cross-btn;
-  }
-
-  &__question {
-    font-weight: 500;
-    font-size: 24px;
-    margin-bottom: 32px;
-    text-align: start;
-    margin-left: 40px;
+    @include modal-close-btn;
   }
 
   &__selector-container {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__leave-btn {
-    @include selector-btn();
-
-    margin-left: 40px;
-    background-color: $btn-pink;
-    border: 3px solid $btn-pink;
+    @include modal-buttons-container;
   }
 
   &__leave-btn:hover {
@@ -73,14 +26,6 @@
   }
 
   &__cancel-btn {
-    @include selector-btn();
-
-    margin-right: 40px;
-    background-color: $modals-background;
-    border: 3px solid;
-  }
-
-  &__cancel-btn:hover {
-    background-color: $btn-green;
+    @include modal-cancel-btn;
   }
 }

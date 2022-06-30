@@ -25,15 +25,3 @@
     }
   }
 }
-
-@media screen and (max-width: 1280px) {
-  .history_list {
-    width: calc(100% + 12px);
-    padding-right: 12px;
-    gap: 24px;
-  }
-
-  .history .btn {
-    height: 48px;
-  }
-}

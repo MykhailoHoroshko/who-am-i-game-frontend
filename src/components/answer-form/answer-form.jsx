@@ -3,14 +3,20 @@ import { ReactComponent as Check } from '../../assets/svg/check-icon-btn.svg';
 import { ReactComponent as Question } from '../../assets/svg/question-icon-btn.svg';
 import { ReactComponent as Cross } from '../../assets/svg/cross-icon-btn.svg';
 import './answer-form.scss';
-import { NO, NOT_SURE, YES } from '../../constants/constants';
+import {
+  ANSWERING,
+  GUESSING,
+  NO,
+  NOT_SURE,
+  YES,
+} from '../../constants/constants';
 
-function AnswerForm(props) {
+function AnswerForm({ mode, onClick }) {
   let btnRow = null;
 
-  if (props.mode === 'answer') {
+  if (mode === ANSWERING) {
     btnRow = (
-      <form className="row" onSubmit={props.onClick}>
+      <form className="answer-row" onSubmit={onClick}>
         <Btn
           type="submit"
           className="btn-green-solid btn-third"
@@ -36,9 +42,9 @@ function AnswerForm(props) {
     );
   }
 
-  if (props.mode === 'guess') {
+  if (mode === GUESSING) {
     btnRow = (
-      <form className="row" onSubmit={props.onClick}>
+      <form className="answer-row" onSubmit={onClick}>
         <Btn type="submit" className="btn-green-solid btn-half" value={YES}>
           <Check fill="#1e1b18" />
           YES

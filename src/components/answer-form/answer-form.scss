@@ -1,4 +1,11 @@
-.btn-half,
-.btn-third {
-  gap: 10px;
+.answer-row {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  gap: 16px;
+
+  .btn-half,
+  .btn-third {
+    height: 56px;
+  }
 }

@@ -2,37 +2,25 @@
 @import '../../../styles/mixins';
 
 .guess-character-modal {
-  width: 100%;
-  height: 100%;
-  max-width: 800px;
-  max-height: 404px;
-  background-color: $modals-background;
-  border-radius: 6px;
-  filter: drop-shadow(0 0 0.75rem grey);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: $font-black;
-  z-index: 100;
+  @include font-normal;
+  @include modal-container;
 
   &__title-container {
-    @include modal-msg-container;
+    @include modal-title-container;
   }
 
   &__title-container_title {
-    @include modal-msg;
+    @include font-big;
   }
 
   &__title-container_close-btn {
-    @include cross-btn;
+    @include modal-close-btn;
   }
 
   &__timer-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px 40px 0px 40px;
     color: $primary-background-blue;
   }
 
@@ -49,20 +37,10 @@
   }
 
   &__players-guess {
-    margin-top: 37px;
-    width: 100%;
-    max-width: 720px;
-    height: 93px;
-    padding: 0px 0px 0px 32px;
-    box-sizing: border-box;
-    border: 4px solid $primary-background-blue;
-    border-radius: 4px;
-    font-size: 24px;
-    font-weight: 500;
+    @include modal-input-field;
   }
 
   &__guess-container {
-    margin-top: 32px;
-    margin: 32px 40px 32px 40px;
+    @include modal-buttons-container;
   }
 }

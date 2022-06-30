@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import convertTime from '../../../helper-functions/convert-time';
 import clsx from 'clsx';
 import '../timer.scss';
+import { INACTIVE } from '../../../constants/constants';
 
 function CountdownTimer({ inLobby, time = 60, small, paused }) {
   const [seconds, setSeconds] = useState(time);
@@ -22,7 +23,7 @@ function CountdownTimer({ inLobby, time = 60, small, paused }) {
 
   useEffect(() => {
     if (seconds === 0) {
-      navigate('../inactive');
+      navigate(INACTIVE);
     }
   });
 

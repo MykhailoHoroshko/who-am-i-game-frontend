@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   padding: 16px 32px;
-  height: 48px;
+  height: 56px;
   border-radius: 8px;
   font-weight: 900;
   text-transform: uppercase;
@@ -23,27 +23,17 @@
   color: $font-black;
 }
 
-.response-unsure {
-  background-color: $btn-orange;
-  color: $font-black;
-}
-
-.wait-yes {
+.waiting-yes {
   color: $btn-green;
   background: $primary-background-blue;
 }
 
-.wait-no {
+.waiting-no {
   color: $btn-pink;
   background: $primary-background-blue;
 }
 
-.wait-unsure {
-  color: $btn-orange;
-  background: $primary-background-blue;
-}
-
-.icon-wait-yes {
+.icon-waiting-yes {
   height: 19.2px;
   width: 19.2px;
   background-image: url('../../assets/icons/check.svg');
@@ -54,24 +44,13 @@
   background-repeat: no-repeat;
 }
 
-.icon-wait-no {
+.icon-waiting-no {
   height: 19.2px;
   width: 19.2px;
   background-image: url('../../assets/icons/cross.svg');
   filter: invert(57%) sepia(65%) saturate(3655%) hue-rotate(299deg)
     brightness(104%) contrast(101%);
   background-size: 19.2px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.icon-wait-unsure {
-  height: 25px;
-  width: 25px;
-  background-image: url('../../assets/icons/questionmark.svg');
-  filter: invert(86%) sepia(19%) saturate(902%) hue-rotate(319deg)
-    brightness(103%) contrast(103%);
-  background-size: 13px;
   background-position: center;
   background-repeat: no-repeat;
 }

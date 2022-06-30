@@ -16,9 +16,9 @@
   border: none;
   outline: none;
   cursor: pointer;
-  transition: all 0.3s ease;
   width: 100%;
-  height: 48px;
+  height: 67px;
+  transition: all 0.2s ease;
 }
 
 .btn:disabled {
@@ -27,20 +27,22 @@
 }
 
 .btn:hover {
-  filter: brightness(80%);
+  filter: brightness(140%);
 }
 
 .btn-green-solid {
   background: $btn-green;
+  width: 100%;
 }
 
 .btn-pink-solid {
   background: $btn-pink;
+  width: 100%;
 }
 
 .btn-yellow-solid {
   background: $btn-yellow;
-  height: 67px;
+  width: 100%;
 }
 
 .btn-lightgray-outline {
@@ -52,11 +54,26 @@
   border: 4px solid $main-font-color;
   background-color: $primary-background-blue;
   color: $main-font-color;
-  padding: 0;
   font-weight: 900;
   font-size: 24px;
-  width: 300px;
-  height: 85px;
+  width: 290px;
+}
+
+.btn-pink-outline {
+  border: 4px solid $btn-pink;
+  background-color: $primary-background-blue;
+  color: $btn-pink;
+  font-weight: 900;
+  font-size: 24px;
+  width: 290px;
+}
+
+.btn-fb-blue {
+  background: $lightblue;
+  color: $main-font-color;
+  font-weight: 500;
+  text-transform: none;
+  width: 255px;
 }
 
 .btn-orange-solid {
@@ -67,10 +84,6 @@
   border-radius: 200px;
   width: 100%;
   height: 100%;
-}
-
-.btn-large {
-  height: 67px;
 }
 
 .btn-half {
@@ -97,4 +110,10 @@
   width: 11px;
   height: 19px;
   background-image: url(../../assets/svg/question-icon-btn.svg);
+}
+
+.fb {
+  width: 24px;
+  height: 24px;
+  background-image: url(../../assets/icons/fb.svg);
 }

@@ -1,0 +1,28 @@
+@import '../../../styles/colors';
+
+.filter-item {
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  label {
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      position: relative;
+      top: 4px;
+      left: 4px;
+      width: 24px;
+      height: 24px;
+      margin-right: 20px;
+      background: url('../../../assets/icons/checkbox.svg');
+    }
+
+    &.checked:before {
+      background: url('../../../assets/icons/checkbox-checked.svg');
+    }
+  }
+}

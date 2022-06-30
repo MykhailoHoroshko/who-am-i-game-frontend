@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CountdownTimer from '../../timer/timer-countdown/timer-countdown';
 import Btn from '../../btn/btn';
 import checkGuess from '../../../helper-functions/check-guess.js';
 import './guess-a-character.scss';
 import { submitGuess } from '../../../services/games-service';
+import GameDataContext from '../../../contexts/game-data-context';
 
 function GuessCharacterModal({ displayModal, setDisplayModal }) {
   const [guess, setGuess] = useState('');
+  const { gameData, playerId } = useContext(GameDataContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,8 +26,7 @@ function GuessCharacterModal({ displayModal, setDisplayModal }) {
       onSubmit={(e) => {
         e.preventDefault();
         setDisplayModal(false);
-        navigate('../');
-        submitGuess('Player 1', 1, guess);
+        submitGuess(playerId, gameData.data.id, guess);
       }}
     >
       <div className="guess-character-modal__title-container">
@@ -52,15 +53,13 @@ function GuessCharacterModal({ displayModal, setDisplayModal }) {
           setGuess(e.target.value);
         }}
       />
-      <div className="guess-character-modal__guess-container">
-        <Btn
-          className="btn-yellow-solid"
-          disabled={checkGuess(guess)}
-          type="submit"
-        >
-          I WANT TO GUESS
-        </Btn>
-      </div>
+      <Btn
+        className="btn-yellow-solid"
+        disabled={checkGuess(guess)}
+        type="submit"
+      >
+        I WANT TO GUESS
+      </Btn>
     </form>
   );
 }

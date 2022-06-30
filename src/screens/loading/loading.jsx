@@ -41,7 +41,7 @@ function Loading() {
       <Timer />
       <div className="loading__button-wrappper">
         <Btn
-          className={['btn-pink-solid', 'btn-large']}
+          className={['btn-pink-solid']}
           onClick={() => setModalActive(true)}
         >
           LEAVE GAME

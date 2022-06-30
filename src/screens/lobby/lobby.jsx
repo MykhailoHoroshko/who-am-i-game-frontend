@@ -6,11 +6,7 @@ import Header from '../../components/header/header';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  NOT_READY,
-  PROCESSING_QUESTION,
-  READY,
-} from '../../constants/constants';
+import { PLAY, PROCESSING_QUESTION, READY } from '../../constants/constants';
 import './lobby.scss';
 import GameDataContext from '../../contexts/game-data-context';
 import { findGameById } from '../../services/games-service';
@@ -34,11 +30,16 @@ function Lobby() {
     if (!gameData.data.status) navigate('/');
 
     if (gameData.data.status === PROCESSING_QUESTION) {
-      navigate('/play');
+      navigate(PLAY);
     }
   }, [gameData, navigate]);
 
-  const players = gameData.data.players;
+  const players = gameData.data.players.map((player, index) => ({
+    nickname: `Player ${index + 1}`,
+    avatar: `avatar0${index + 1}`,
+    ...player,
+  }));
+
   const currentPlayer =
     players && players.find((player) => player.player.id === playerId);
   const playersWithoutYou =
@@ -47,15 +48,15 @@ function Lobby() {
   return (
     <ScreenWrapper>
       <div className="input-screen">
-        <Header inLobby />
+        <Header type="game-lobby" />
         <div className="input-screen__player">
           <div className="input-screen__player-card-wrapper">
             {currentPlayer && (
               <PlayerCard
-                avatarClassName={`avatar01`}
-                name={`Player 1`}
+                avatarClassName={currentPlayer.avatar}
+                name={currentPlayer.nickname}
                 playerStatusClassName={
-                  currentPlayer.state === READY ? 'yes' : 'no'
+                  currentPlayer.state === READY ? 'yes' : 'unsure'
                 }
                 isYou
               />
@@ -64,10 +65,10 @@ function Lobby() {
               playersWithoutYou.map((player, index) => (
                 <PlayerCard
                   key={player.player.id}
-                  avatarClassName={`avatar0${index + 2}`}
-                  name={`Player ${index + 2}`}
+                  avatarClassName={player.avatar}
+                  name={player.nickname}
                   playerStatusClassName={
-                    player.state === NOT_READY ? 'no' : 'yes'
+                    player.state === READY ? 'yes' : 'unsure'
                   }
                 />
               ))
@@ -78,7 +79,7 @@ function Lobby() {
           <div className="input-screen__btn-wrapper">
             {suggestBtn && (
               <Btn
-                className={['btn-green-solid', 'btn-large']}
+                className={['btn-green-solid']}
                 onClick={() => {
                   setSuggestModal(true);
                 }}
@@ -90,7 +91,7 @@ function Lobby() {
             <div className="input-screen__demarcation"></div>
 
             <Btn
-              className={['btn-pink-solid', 'btn-large']}
+              className={['btn-pink-solid']}
               onClick={() => setLeaveModalActive(true)}
             >
               LEAVE GAME
@@ -102,7 +103,7 @@ function Lobby() {
           setModalActive={setLeaveModalActive}
         />
         <SelectCharacterModal
-          playerNum={1}
+          player={currentPlayer.nickname}
           displayModal={showSuggestModal}
           setDisplayModal={setSuggestModal}
           setSuggestBtn={setSuggestBtn}

@@ -3,4 +3,10 @@
 
 .screen-wrapper {
   @include message-screen;
+  min-width: 1280px;
+}
+
+.lobby-screen {
+  @include font-normal;
+  padding-bottom: 40px;
 }

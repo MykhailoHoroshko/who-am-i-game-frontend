@@ -1,0 +1,27 @@
+.table-header__column {
+  position: relative;
+  text-align: left;
+  width: 363px;
+  height: 51px;
+  box-sizing: content-box;
+  cursor: pointer;
+
+  &.type {
+    width: 300px;
+  }
+}
+
+.icon {
+  display: inline-block;
+  width: 24px;
+  height: 17px;
+  margin-right: 20px;
+  background: url('../../../assets/icons/icon.svg');
+  filter: invert(100%) sepia(4%) saturate(169%) hue-rotate(339deg)
+    brightness(118%) contrast(96%);
+
+  &.icon-green {
+    filter: invert(82%) sepia(33%) saturate(4536%) hue-rotate(105deg)
+      brightness(100%) contrast(102%);
+  }
+}

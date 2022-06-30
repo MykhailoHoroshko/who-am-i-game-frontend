@@ -1,4 +1,5 @@
 @import '../../styles/colors.scss';
+@import '../../styles/mixins';
 
 .player {
   display: flex;
@@ -17,32 +18,33 @@
   }
 
   &__card-name {
+    @include font-normal;
     margin-right: 16px;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 29px;
     white-space: nowrap;
     overflow: hidden;
+  }
+
+  &__you-label,
+  &__assigned-character {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    min-width: 160px;
+    height: 51px;
+    padding: 16px 32px 16px 32px;
+    border-radius: 25px;
+    text-transform: uppercase;
   }
 
   &__you-label {
     background-color: $btn-green;
     color: $font-black;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 16px 32px 16px 32px;
-    border-radius: 25px;
-    height: 51px;
-    min-width: 160px;
   }
 
   &__assigned-character {
     background-color: $modals-background;
     color: $secondary-background-blue;
-    font-size: 16px;
-    font-weight: 700;
-    border-radius: 25px;
-    padding: 16px 32px 16px 32px;
   }
 
   &__card-avatar {

@@ -8,13 +8,20 @@
   font-weight: 900;
   font-size: 32px;
   line-height: 39px;
-  margin-bottom: 0px;
   color: $modals-background;
-  margin-bottom: 24px;
+  margin: 31px 0 24px;
 
   &__leave-btn-wrapper {
     width: 184px;
     height: 51px;
+  }
+
+  .create-btn-wrapper {
+    width: 230px;
+  }
+
+  &__timer-wrapper {
+    width: 177px;
   }
 }
 

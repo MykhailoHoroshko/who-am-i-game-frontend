@@ -98,6 +98,14 @@ function answerQuestion(player, id, question) {
   });
 }
 
+function leaveGame(player, id) {
+  axios({
+    method: 'delete',
+    url: `/api/v1/games/${id}/answer`,
+    headers: { 'X-Player': player },
+  });
+}
+
 export {
   findGameById,
   findAvailableGames,
@@ -108,4 +116,5 @@ export {
   submitGuess,
   answerQuestion,
   getAllPlayersCount,
+  leaveGame,
 };

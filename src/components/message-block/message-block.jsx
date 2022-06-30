@@ -3,9 +3,7 @@ import clsx from 'clsx';
 import './message-block.scss';
 
 function MessageBlock({ mode, message }) {
-  const modeClassName = `${mode}-${
-    message === "don't know" ? 'unsure' : message
-  }`;
+  const modeClassName = `${mode.toLowerCase()}-${message.toLowerCase()}`;
 
   return (
     <div className={clsx('text', modeClassName)}>

@@ -1,0 +1,17 @@
+@import '../../../styles/colors';
+
+.lobby-item {
+  text-align: left;
+
+  &__column {
+    width: 370px;
+    height: 51px;
+    padding: 16px 16px 16px 0;
+    box-sizing: content-box;
+  }
+
+  .btn-wrapper {
+    width: 102px;
+    height: 51px;
+  }
+}

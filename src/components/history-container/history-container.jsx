@@ -7,9 +7,16 @@ import MessageBlock from '../message-block/message-block';
 import './history-container.scss';
 import { users } from '../../store/mock-data';
 import { answerQuestion, askQuestion } from '../../services/games-service';
+import {
+  ANSWERING,
+  ASKING,
+  GUESSING,
+  RESPONSE,
+  WAITING,
+} from '../../constants/constants';
 
 function HistoryContainer({ mode, setMode, playerId, gameId }) {
-  const [message, setMessage] = useState('unsure');
+  const [message, setMessage] = useState('yes');
   const [currentQuestion, setCurrentQuestion] = useState('');
   const [disabled, setDisabled] = useState(false);
   const bottomElement = useRef(null);
@@ -38,7 +45,7 @@ function HistoryContainer({ mode, setMode, playerId, gameId }) {
   const handleClick = (event) => {
     event.preventDefault();
     const answer = event.nativeEvent.submitter.value;
-    setMode('wait');
+    setMode((state) => (state === GUESSING ? WAITING : ''));
     setMessage(answer);
 
     // answerQuestion(playerId, gameId, answer);
@@ -52,17 +59,19 @@ function HistoryContainer({ mode, setMode, playerId, gameId }) {
         ))}
         <div className="list_scroll_bottom" ref={bottomElement}></div>
       </div>
-      {mode === 'ask' && !disabled && (
+      {mode === ASKING && !disabled && (
         <QuestionForm
           setCurrentQuestion={setCurrentQuestion}
           currentQuestion={currentQuestion}
           sendQuestion={sendQuestionHandler}
         />
       )}
-      {(mode === 'answer' || mode === 'guess') && (
+      {(mode === ANSWERING || mode === GUESSING) && (
         <AnswerForm mode={mode} onClick={handleClick} />
       )}
-      {mode === 'response' && <MessageBlock mode={mode} message={message} />}
+      {(mode === RESPONSE || mode === WAITING) && (
+        <MessageBlock mode={mode} message={message} />
+      )}
     </div>
   );
 }
