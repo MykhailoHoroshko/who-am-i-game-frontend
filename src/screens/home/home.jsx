@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import GameDataContext from '../../contexts/game-data-context';
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { NUMBER_OF_PLAYERS, LOADING } from '../../constants/constants';
+import { LOADING, WAITING_FOR_PLAYERS } from '../../constants/constants';
 import './home.scss';
 import PlayersOnlineTitle from '../../components/players-online-title/players-online-title';
 import AfterLogin from './AfterLogin';
@@ -40,9 +40,12 @@ function Homepage() {
 
   const onCreateGame = useCallback(async () => {
     const { data } = await findAvailableGames(playerId);
+    const availableGames = data.filter(
+      (game) => game.status === WAITING_FOR_PLAYERS
+    );
+    const game = availableGames[0];
 
-    if (data.length) {
-      const game = data[0];
+    if (game) {
       try {
         await enrollToGame(playerId, game.id);
         setGameData(game);
@@ -64,7 +67,6 @@ function Homepage() {
         //todo: handle errors
       }
     }
-    console.log(data);
   }, [setGameData, playerId, navigate]);
 
   return (

@@ -49,7 +49,7 @@ function suggestCharacter(player, id, name, character) {
     url: `/api/v1/games/${id}/characters`,
     headers: { 'X-Player': player },
     data: {
-      name: name,
+      nickName: name,
       character: character,
     },
   });
