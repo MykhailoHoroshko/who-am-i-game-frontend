@@ -27,10 +27,11 @@ export default function useGameData() {
 
           if (data.players.length) setGameData(data);
         } catch (error) {
-          if (error.response.status === 404) {
-            resetData();
-            navigate('/');
-          }
+          //to do: handle errors
+          // if (error.response.status === 404) {
+          //   resetData();
+          //   navigate('/');
+          // }
         }
       }
     }, 1000);
