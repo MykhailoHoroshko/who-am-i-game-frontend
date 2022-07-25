@@ -14,7 +14,7 @@ function CountdownTimer({ inLobby, time = 60, small, timeClassName, paused }) {
   const [seconds, setSeconds] = useState(time);
   const navigate = useNavigate();
   useTimer(() => {
-    setSeconds((seconds) => seconds - 1)
+    setSeconds((seconds) => seconds - 1);
     sessionStorage.setItem('timerCounter', seconds - 1);
   });
 
