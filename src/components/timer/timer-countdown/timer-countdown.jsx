@@ -13,14 +13,17 @@ function CountdownTimer({ inLobby, time = 60, small, timeClassName, paused }) {
   const { gameData, resetData, playerId } = useContext(GameDataContext);
   const [seconds, setSeconds] = useState(time);
   const navigate = useNavigate();
-
-  useTimer(() => setSeconds((seconds) => seconds - 1));
+  useTimer(() => {
+    setSeconds((seconds) => seconds - 1)
+    sessionStorage.setItem('timerCounter', seconds - 1);
+  });
 
   useEffect(() => {
     async function leaveResetData() {
       if (seconds === 0) {
         try {
           await leaveGame(playerId, gameData.id);
+          sessionStorage.removeItem('timerCounter');
           resetData();
           navigate(INACTIVE);
         } catch (error) {

@@ -18,6 +18,7 @@ function LeaveGameModal({ active, onCancel }) {
     event.preventDefault();
     try {
       await leaveGame(playerId, gameData.id);
+      sessionStorage.removeItem('timerCounter');
       resetData();
       navigate('/');
     } catch (error) {
