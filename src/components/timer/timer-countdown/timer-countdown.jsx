@@ -14,9 +14,13 @@ function CountdownTimer({ inLobby, time = 60, small, timeClassName, paused }) {
   const [seconds, setSeconds] = useState(time);
   const navigate = useNavigate();
 
-  useTimer(() =>
-    setSeconds((seconds) => (seconds > 0 ? seconds - 1 : seconds))
-  );
+  useTimer(() => {
+    if (paused || seconds === 0) {
+      return;
+    }
+
+    setSeconds((seconds) => seconds - 1);
+  });
 
   useEffect(() => {
     async function leaveResetData() {
