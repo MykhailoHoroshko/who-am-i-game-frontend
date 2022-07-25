@@ -39,14 +39,14 @@ function CountdownTimer({ inLobby, time, small, timeClassName, paused }) {
   });
 
   return (
-      <div className="timer">
-        <p className={clsx('timer__start', [inLobby, small])}>GAME START</p>
-        <div
-            className={clsx('timer__time', { 'time-small': small }, timeClassName)}
-        >
-          {convertTime(seconds)}
-        </div>
+    <div className="timer">
+      <p className={clsx('timer__start', [inLobby, small])}>GAME START</p>
+      <div
+        className={clsx('timer__time', { 'time-small': small }, timeClassName)}
+      >
+        {convertTime(seconds)}
       </div>
+    </div>
   );
 }
 
