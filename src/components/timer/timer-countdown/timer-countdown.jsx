@@ -9,13 +9,15 @@ import GameDataContext from '../../../contexts/game-data-context';
 import { leaveGame } from '../../../services/games-service';
 import useTimer from '../../../hooks/useTimer';
 
-function CountdownTimer({ inLobby, time = 60, small, timeClassName, paused }) {
+function CountdownTimer({ inLobby, time, small, timeClassName, paused }) {
   const { gameData, resetData, playerId } = useContext(GameDataContext);
   const [seconds, setSeconds] = useState(time);
   const navigate = useNavigate();
   useTimer(() => {
     setSeconds((seconds) => seconds - 1);
     sessionStorage.setItem('timerCounter', seconds - 1);
+    sessionStorage.setItem('timerGuess', seconds - 1);
+    sessionStorage.setItem('timerAnswer', seconds - 1);
   });
 
   useEffect(() => {
@@ -24,6 +26,8 @@ function CountdownTimer({ inLobby, time = 60, small, timeClassName, paused }) {
         try {
           await leaveGame(playerId, gameData.id);
           sessionStorage.removeItem('timerCounter');
+          sessionStorage.removeItem('timerGuess');
+          sessionStorage.removeItem('timerAnswer');
           resetData();
           navigate(INACTIVE);
         } catch (error) {
