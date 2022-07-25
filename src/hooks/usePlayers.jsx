@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useContext } from 'react';
 import GameDataContext from '../contexts/game-data-context';
 
@@ -14,6 +15,11 @@ export default function usePlayers() {
   const playersWithoutCurrent = players.filter(
     (player) => player.player.id !== playerId
   );
+
+  useEffect(() => {
+    sessionStorage.setItem('avatar', currentPlayer?.avatar);
+    sessionStorage.setItem('name', currentPlayer?.nickname);
+  }, [currentPlayer.avatar, currentPlayer.nickname]);
 
   return { currentPlayer, playersWithoutCurrent };
 }

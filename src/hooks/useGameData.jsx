@@ -27,6 +27,7 @@ export default function useGameData() {
 
           if (data.players.length) setGameData(data);
         } catch (error) {
+          //to do: handle errors
           if (error.response.status === 404) {
             resetData();
             navigate('/');
