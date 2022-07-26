@@ -26,7 +26,7 @@ import {
   RESTORE,
   NEW_PASSWORD,
   PROFILE,
-  REDIRECT
+  REDIRECT,
 } from './constants/constants';
 import CreateAccount from './screens/create-account/create-account';
 import SignIn from './screens/signin-page/signin-page';
@@ -34,7 +34,7 @@ import RestorePassword from './screens/restore-password/restore-password';
 import NewPassword from './screens/new-password/new-password';
 import GameLobby from './screens/game-lobby/game-lobby';
 import ProfilePage from './screens/profile-page/profile-page';
-import EmailRedirect from './screens/email-redirect/email-redirect'; 
+import EmailRedirect from './screens/email-redirect/email-redirect';
 
 function App() {
   const [gameData, setGameData] = useState({ status: null, players: [] });
@@ -54,28 +54,28 @@ function App() {
   return (
     <div className="App">
       <AuthProvider>
-      <GameDataContext.Provider
-        value={{ gameData, setGameData, playerId, setPlayerId, resetData }}
-      >
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path={MAIN_LOBBY} element={<MainLobby />} />
-          <Route path={GAME_LOBBY} element={<GameLobby />} />
-          <Route path={LOADING} element={<Loading />} />
-          <Route path={LOBBY} element={<Lobby />} />
-          <Route path={PLAY} element={<PlayPage />} />
-          <Route path={DEFEAT} element={<LostGame />} />
-          <Route path={VICTORY} element={<Victory />} />
-          <Route path={INACTIVE} element={<InactivityKick />} />
-          <Route path={CREATE_ACCOUNT} element={<CreateAccount />} />
-          <Route path={SIGN_IN} element={<SignIn />} />
-          <Route path={RESTORE} element={<RestorePassword />} />
-          <Route path={NEW_PASSWORD} element={<NewPassword />} />
-          <Route path={REDIRECT} element={<EmailRedirect />} />
-          <Route path={PROFILE} element={<ProfilePage />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </GameDataContext.Provider>
+        <GameDataContext.Provider
+          value={{ gameData, setGameData, playerId, setPlayerId, resetData }}
+        >
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path={MAIN_LOBBY} element={<MainLobby />} />
+            <Route path={GAME_LOBBY} element={<GameLobby />} />
+            <Route path={LOADING} element={<Loading />} />
+            <Route path={LOBBY} element={<Lobby />} />
+            <Route path={PLAY} element={<PlayPage />} />
+            <Route path={DEFEAT} element={<LostGame />} />
+            <Route path={VICTORY} element={<Victory />} />
+            <Route path={INACTIVE} element={<InactivityKick />} />
+            <Route path={CREATE_ACCOUNT} element={<CreateAccount />} />
+            <Route path={SIGN_IN} element={<SignIn />} />
+            <Route path={RESTORE} element={<RestorePassword />} />
+            <Route path={NEW_PASSWORD} element={<NewPassword />} />
+            <Route path={REDIRECT} element={<EmailRedirect />} />
+            <Route path={PROFILE} element={<ProfilePage />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </GameDataContext.Provider>
       </AuthProvider>
     </div>
   );

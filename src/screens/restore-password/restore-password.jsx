@@ -22,10 +22,10 @@ function RestorePassword() {
     e.preventDefault();
     try {
       await sendEmail(email);
-      navigate(REDIRECT)
+      navigate(REDIRECT);
       setEmail('');
     } catch (error) {
-      alert(error)
+      alert(error);
     }
   };
 

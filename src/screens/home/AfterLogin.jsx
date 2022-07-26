@@ -9,8 +9,8 @@ function AfterLogin() {
   const authCtx = useAuth();
 
   const logoutHandler = () => {
-    authCtx.logout()
-  }
+    authCtx.logout();
+  };
 
   return (
     <div className="after-login-wrapper">
@@ -41,10 +41,7 @@ function AfterLogin() {
       >
         profile
       </Btn>
-      <Btn
-        className={'btn-pink-outline'}
-        onClick={logoutHandler}
-      >
+      <Btn className={'btn-pink-outline'} onClick={logoutHandler}>
         log out
       </Btn>
     </div>

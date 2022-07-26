@@ -28,13 +28,13 @@ function SignIn() {
     e.preventDefault();
     try {
       const response = await authorisationUser(email, password);
-      authCtx.login(response.data.idToken)
-      authCtx.changeUserName(response.data.userName)
+      authCtx.login(response.data.idToken);
+      authCtx.changeUserName(response.data.userName);
       setEmail('');
       setPassword('');
-      navigate('/')
+      navigate('/');
     } catch (error) {
-      alert(error)
+      alert(error);
     }
   };
 

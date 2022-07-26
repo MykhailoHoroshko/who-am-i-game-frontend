@@ -20,10 +20,7 @@ function BeforeLogin({ createGame }) {
         CREATE ACCOUNT
       </Btn>
       <div className="text-login or">or</div>
-      <Btn
-        className={'btn-fb-blue'}
-        iconClassName={'fb'}
-      >
+      <Btn className={'btn-fb-blue'} iconClassName={'fb'}>
         Continue with Facebook
       </Btn>
       <div className="dividing-line"></div>

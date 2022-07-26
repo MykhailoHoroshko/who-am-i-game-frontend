@@ -30,7 +30,7 @@ const SIGN_IN = '/sign-in';
 const RESTORE = '/restore';
 const NEW_PASSWORD = '/new-password';
 const PROFILE = '/profile';
-const REDIRECT = '/email-redirect'
+const REDIRECT = '/email-redirect';
 
 const THEME_FILTER = [
   { title: 'Actors', checked: false },
@@ -85,5 +85,5 @@ export {
   RESTORE,
   NEW_PASSWORD,
   PROFILE,
-  REDIRECT
+  REDIRECT,
 };

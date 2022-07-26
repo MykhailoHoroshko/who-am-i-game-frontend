@@ -8,7 +8,6 @@ import { useState } from 'react';
 import { registerationUser } from '../../services/users-service';
 import { SIGN_IN } from '../../constants/constants';
 
-
 function CreateAccount() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -40,9 +39,9 @@ function CreateAccount() {
       setUsername('');
       setEmail('');
       setPassword('');
-      navigate(SIGN_IN)
+      navigate(SIGN_IN);
     } catch (error) {
-      alert(error)
+      alert(error);
     }
   };
 

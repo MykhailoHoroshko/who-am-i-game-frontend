@@ -25,12 +25,11 @@ export default function ProfilePage() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      await updateUser(username, authCtx.token, password)
-      authCtx.changeUserName(username)
-      alert('username and password changed')
-    }
-    catch (error) {
-      alert(error)
+      await updateUser(username, authCtx.token, password);
+      authCtx.changeUserName(username);
+      alert('username and password changed');
+    } catch (error) {
+      alert(error);
     }
     setUsername('');
     setPassword('');

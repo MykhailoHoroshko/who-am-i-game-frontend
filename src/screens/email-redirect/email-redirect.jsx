@@ -4,7 +4,6 @@ import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapp
 import { useNavigate } from 'react-router-dom';
 import './email-redirect.scss';
 
-
 function EmailRedirect() {
   const navigate = useNavigate();
 

@@ -6,17 +6,16 @@ import { useState } from 'react';
 import InputPassword from '../../components/Input/InputPassword';
 import { sendPass } from '../../services/users-service';
 
-
 function NewPassword() {
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [rePassword, setRePassword] = useState('');
 
   function useQuery() {
-    return new URLSearchParams(useLocation().search)
+    return new URLSearchParams(useLocation().search);
   }
   const query = useQuery();
-  const obbCode = query.get('obbCode')
+  const obbCode = query.get('obbCode');
 
   const passwordHandler = (e) => {
     setPassword(e.target.value);
@@ -32,11 +31,10 @@ function NewPassword() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      await sendPass(obbCode, password)
-      alert('Password changed')
-    }
-    catch (error) {
-      alert(error)
+      await sendPass(obbCode, password);
+      alert('Password changed');
+    } catch (error) {
+      alert(error);
     }
     setPassword('');
     setRePassword('');
