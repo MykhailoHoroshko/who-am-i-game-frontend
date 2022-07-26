@@ -10,13 +10,6 @@ function NewPassword() {
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [rePassword, setRePassword] = useState('');
-
-  function useQuery() {
-    return new URLSearchParams(useLocation().search);
-  }
-  const query = useQuery();
-  const obbCode = query.get('obbCode');
-
   const passwordHandler = (e) => {
     setPassword(e.target.value);
   };
@@ -30,6 +23,11 @@ function NewPassword() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    function UseQuery() {
+      return new URLSearchParams(useLocation().search);
+    }
+    const query = UseQuery();
+    const obbCode = query.get('obbCode');
     try {
       await sendPass(obbCode, password);
       alert('Password changed');

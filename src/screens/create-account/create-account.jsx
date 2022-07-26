@@ -5,7 +5,7 @@ import InputPassword from '../../components/Input/InputPassword';
 import Btn from '../../components/btn/btn';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { registerationUser } from '../../services/users-service';
+import { registrationUser } from '../../services/users-service';
 import { SIGN_IN } from '../../constants/constants';
 
 function CreateAccount() {
@@ -35,10 +35,7 @@ function CreateAccount() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      await registerationUser(username, email, password);
-      setUsername('');
-      setEmail('');
-      setPassword('');
+      await registrationUser(username, email, password);
       navigate(SIGN_IN);
     } catch (error) {
       alert(error);

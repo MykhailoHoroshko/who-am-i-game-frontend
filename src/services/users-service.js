@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-async function registerationUser(username, email, password) {
+async function registrationUser(username, email, password) {
   return axios({
     method: 'post',
-    url: '/api/v1/games/registration',
+    url: '/api/v1/users/registration',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -18,7 +18,7 @@ async function registerationUser(username, email, password) {
 async function authorisationUser(email, password) {
   return axios({
     method: 'post',
-    url: '/api/v1/games/authorisation',
+    url: '/api/v1/users/authorisation',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -32,7 +32,7 @@ async function authorisationUser(email, password) {
 async function sendEmail(email) {
   return axios({
     method: 'post',
-    url: '/api/v1/games/email',
+    url: '/api/v1/users/email',
     data: {
       email: email,
     },
@@ -41,7 +41,7 @@ async function sendEmail(email) {
 async function sendPass(oobCode, password) {
   return axios({
     method: 'post',
-    url: '/api/v1/games/password',
+    url: '/api/v1/users/password',
     data: {
       oobCode,
       password,
@@ -51,7 +51,7 @@ async function sendPass(oobCode, password) {
 async function updateUser(username, idToken, password) {
   return axios({
     method: 'post',
-    url: '/api/v1/games/update',
+    url: '/api/v1/users/update',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -65,7 +65,7 @@ async function updateUser(username, idToken, password) {
 }
 
 export {
-  registerationUser,
+  registrationUser,
   authorisationUser,
   sendEmail,
   sendPass,

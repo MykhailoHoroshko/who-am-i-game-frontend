@@ -23,7 +23,6 @@ function RestorePassword() {
     try {
       await sendEmail(email);
       navigate(REDIRECT);
-      setEmail('');
     } catch (error) {
       alert(error);
     }

@@ -30,8 +30,6 @@ function SignIn() {
       const response = await authorisationUser(email, password);
       authCtx.login(response.data.idToken);
       authCtx.changeUserName(response.data.userName);
-      setEmail('');
-      setPassword('');
       navigate('/');
     } catch (error) {
       alert(error);

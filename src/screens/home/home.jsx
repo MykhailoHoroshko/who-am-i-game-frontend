@@ -13,9 +13,7 @@ import { createGame, leaveGame } from '../../services/games-service';
 
 function Homepage() {
   const { setGameData, resetData, playerId } = useContext(GameDataContext);
-  const authCtx = useAuth();
-
-  const isLoggedIn = authCtx.isLoggedIn;
+  const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
