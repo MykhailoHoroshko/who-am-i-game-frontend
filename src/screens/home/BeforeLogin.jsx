@@ -2,7 +2,7 @@ import Btn from '../../components/btn/btn';
 import { CREATE_ACCOUNT, SIGN_IN } from '../../constants/constants';
 import { useNavigate } from 'react-router-dom';
 
-function BeforeLogin({ setIsLogin, createGame }) {
+function BeforeLogin({ createGame }) {
   const navigate = useNavigate();
 
   return (
@@ -23,9 +23,6 @@ function BeforeLogin({ setIsLogin, createGame }) {
       <Btn
         className={'btn-fb-blue'}
         iconClassName={'fb'}
-        onClick={() => {
-          setIsLogin(true);
-        }}
       >
         Continue with Facebook
       </Btn>

@@ -5,6 +5,9 @@ import InputPassword from '../../components/Input/InputPassword';
 import Btn from '../../components/btn/btn';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { registerationUser } from '../../services/users-service';
+import { SIGN_IN } from '../../constants/constants';
+
 
 function CreateAccount() {
   const navigate = useNavigate();
@@ -26,16 +29,21 @@ function CreateAccount() {
 
   const formIsValid =
     password.length >= 8 &&
-    password.length < 20 &&
     email.length > 3 &&
-    username.length > 3 &&
-    username.length < 8;
+    username.length >= 2 &&
+    username.length < 50;
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    setUsername('');
-    setEmail('');
-    setPassword('');
+    try {
+      await registerationUser(username, email, password);
+      setUsername('');
+      setEmail('');
+      setPassword('');
+      navigate(SIGN_IN)
+    } catch (error) {
+      alert(error)
+    }
   };
 
   return (

@@ -2,17 +2,20 @@ import GameTitle from '../../components/game-title/game-title';
 import { useNavigate } from 'react-router-dom';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import GameDataContext from '../../contexts/game-data-context';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect } from 'react';
 import { NUMBER_OF_PLAYERS, LOADING } from '../../constants/constants';
 import './home.scss';
 import PlayersOnlineTitle from '../../components/players-online-title/players-online-title';
 import AfterLogin from './AfterLogin';
 import BeforeLogin from './BeforeLogin';
+import useAuth from '../../hooks/useAuth';
 import { createGame, leaveGame } from '../../services/games-service';
 
 function Homepage() {
   const { setGameData, resetData, playerId } = useContext(GameDataContext);
-  const [isLogin, setIsLogin] = useState(false);
+  const authCtx = useAuth();
+
+  const isLoggedIn = authCtx.isLoggedIn
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,10 +54,10 @@ function Homepage() {
     <ScreenWrapper>
       <GameTitle />
       <PlayersOnlineTitle />
-      {isLogin ? (
-        <AfterLogin setIsLogin={setIsLogin} createGame={onCreateGame} />
+      {isLoggedIn ? (
+        <AfterLogin createGame={onCreateGame} />
       ) : (
-        <BeforeLogin setIsLogin={setIsLogin} createGame={onCreateGame} />
+        <BeforeLogin createGame={onCreateGame} />
       )}
     </ScreenWrapper>
   );

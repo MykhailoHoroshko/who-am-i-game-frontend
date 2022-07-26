@@ -1,14 +1,22 @@
 import Btn from '../../components/btn/btn';
 import GameTitle from '../../components/game-title/game-title';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import InputPassword from '../../components/Input/InputPassword';
+import { sendPass } from '../../services/users-service';
+
 
 function NewPassword() {
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [rePassword, setRePassword] = useState('');
+
+  function useQuery() {
+    return new URLSearchParams(useLocation().search)
+  }
+  const query = useQuery();
+  const obbCode = query.get('obbCode')
 
   const passwordHandler = (e) => {
     setPassword(e.target.value);
@@ -21,8 +29,15 @@ function NewPassword() {
   const formIsValid =
     password.length >= 8 && password.length < 20 && password === rePassword;
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
+    try {
+      await sendPass(obbCode, password)
+      alert('Password changed')
+    }
+    catch (error) {
+      alert(error)
+    }
     setPassword('');
     setRePassword('');
   };
