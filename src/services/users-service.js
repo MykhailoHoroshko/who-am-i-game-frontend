@@ -64,10 +64,4 @@ async function updateUser(username, idToken, password) {
   });
 }
 
-export {
-  registrationUser,
-  authorisationUser,
-  sendEmail,
-  sendPass,
-  updateUser,
-};
+export { registrationUser, authorisationUser, sendEmail, sendPass, updateUser };
