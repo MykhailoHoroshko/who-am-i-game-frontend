@@ -2,9 +2,15 @@ import Btn from '../../components/btn/btn';
 import { createGame } from '../../services/games-service';
 import { MAIN_LOBBY, PROFILE } from '../../constants/constants';
 import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
-function AfterLogin({ setIsLogin }) {
+function AfterLogin() {
   const navigate = useNavigate();
+  const authCtx = useAuth();
+
+  const logoutHandler = () => {
+    authCtx.logout();
+  };
 
   return (
     <div className="after-login-wrapper">
@@ -35,12 +41,7 @@ function AfterLogin({ setIsLogin }) {
       >
         profile
       </Btn>
-      <Btn
-        className={'btn-pink-outline'}
-        onClick={() => {
-          setIsLogin(false);
-        }}
-      >
+      <Btn className={'btn-pink-outline'} onClick={logoutHandler}>
         log out
       </Btn>
     </div>
