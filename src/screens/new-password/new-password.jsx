@@ -5,11 +5,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import InputPassword from '../../components/Input/InputPassword';
 import { sendPass } from '../../services/users-service';
+import { SIGN_IN } from '../../constants/constants';
 
 function NewPassword() {
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [rePassword, setRePassword] = useState('');
+  const location = useLocation();
   const passwordHandler = (e) => {
     setPassword(e.target.value);
   };
@@ -23,14 +25,11 @@ function NewPassword() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    function UseQuery() {
-      return new URLSearchParams(useLocation().search);
-    }
-    const query = UseQuery();
+    const query = new URLSearchParams(location.search);
     const obbCode = query.get('obbCode');
     try {
       await sendPass(obbCode, password);
-      alert('Password changed');
+      navigate(SIGN_IN);
     } catch (error) {
       alert(error);
     }
