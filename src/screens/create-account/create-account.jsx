@@ -6,7 +6,12 @@ import Btn from '../../components/btn/btn';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { registrationUser } from '../../services/users-service';
-import { SIGN_IN } from '../../constants/constants';
+import {
+  SIGN_IN,
+  RGX_PASS,
+  RGX_USERNAME,
+  RGX_EMAIL,
+} from '../../constants/constants';
 
 function CreateAccount() {
   const navigate = useNavigate();
@@ -27,10 +32,13 @@ function CreateAccount() {
   };
 
   const formIsValid =
-    password.length >= 8 &&
-    email.length > 3 &&
+    password.match(RGX_PASS) != null &&
+    email.match(RGX_EMAIL) != null &&
+    username.match(RGX_USERNAME) == null &&
+    email.length >= 3 &&
+    email.length < 256 &&
     username.length >= 2 &&
-    username.length < 50;
+    username.length < 51;
 
   const submitHandler = async (e) => {
     e.preventDefault();
