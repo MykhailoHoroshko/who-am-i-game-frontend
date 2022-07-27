@@ -21,7 +21,12 @@ function GuessCharacterModal({ active, onSubmit, onCancel }) {
       <form className="modal-form" onSubmit={(event) => onSubmit(event, guess)}>
         <div className="modal__timer-container">
           <p className="modal__timer-container_name">TIME LEFT</p>
-          <CountdownTimer time={60} inLobby={'in-lobby'} small={'v-small'} />
+          <CountdownTimer
+            time={60}
+            inLobby={'in-lobby'}
+            small={'v-small'}
+            disableSessionTracker
+          />
         </div>
         <input
           className="modal__input-field"
