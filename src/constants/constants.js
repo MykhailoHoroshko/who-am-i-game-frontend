@@ -53,6 +53,11 @@ const TYPE_FILTER = [
   { title: 'Private', checked: false },
 ];
 
+const RGX_PASS =
+  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,32}$/;
+const RGX_USERNAME = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]$/;
+const RGX_EMAIL = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
 export {
   WAITING_FOR_PLAYERS,
   SUGGESTING_CHARACTERS,
@@ -86,4 +91,7 @@ export {
   NEW_PASSWORD,
   PROFILE,
   REDIRECT,
+  RGX_PASS,
+  RGX_USERNAME,
+  RGX_EMAIL,
 };

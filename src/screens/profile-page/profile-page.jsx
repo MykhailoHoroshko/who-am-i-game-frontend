@@ -7,6 +7,7 @@ import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapp
 import './profile-page.scss';
 import { updateUser } from '../../services/users-service';
 import useAuth from '../../hooks/useAuth';
+import { RGX_PASS, RGX_USERNAME } from '../../constants/constants';
 
 export default function ProfilePage() {
   const navigate = useNavigate();
@@ -21,6 +22,12 @@ export default function ProfilePage() {
   const passwordHandler = (e) => {
     setPassword(e.target.value);
   };
+
+  const formIsValid =
+    password.match(RGX_PASS) != null &&
+    username.match(RGX_USERNAME) == null &&
+    username.length >= 2 &&
+    username.length < 51;
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -53,7 +60,11 @@ export default function ProfilePage() {
           placeholder="Password"
         />
         <div className="btn-form-wrapper">
-          <Btn className={'btn-green-solid'} type="submit">
+          <Btn
+            disabled={!formIsValid}
+            className={'btn-green-solid'}
+            type="submit"
+          >
             update
           </Btn>
           <Btn
