@@ -12,12 +12,14 @@ import {
   RGX_USERNAME,
   RGX_EMAIL,
 } from '../../constants/constants';
+import './create-account.scss';
 
 function CreateAccount() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isUsed, setIsUsed] = useState(false);
 
   const usernameHandler = (e) => {
     setUsername(e.target.value);
@@ -29,6 +31,10 @@ function CreateAccount() {
 
   const passwordHandler = (e) => {
     setPassword(e.target.value);
+  };
+
+  const isUsedHandler = () => {
+    setIsUsed(true);
   };
 
   const formIsValid =
@@ -46,7 +52,7 @@ function CreateAccount() {
       await registrationUser(username, email, password);
       navigate(SIGN_IN);
     } catch (error) {
-      alert(error);
+      isUsedHandler();
     }
   };
 
@@ -68,6 +74,11 @@ function CreateAccount() {
           onChange={(e) => emailHandler(e)}
           placeholder="Email"
         />
+        {isUsed ? (
+          <p className="email-alert">This email is already used</p>
+        ) : (
+          ''
+        )}
         <InputPassword
           name="password"
           value={password}
