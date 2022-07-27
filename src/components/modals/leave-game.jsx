@@ -18,9 +18,6 @@ function LeaveGameModal({ active, onCancel }) {
     event.preventDefault();
     try {
       await leaveGame(playerId, gameData.id);
-      sessionStorage.removeItem('timerCounter');
-      sessionStorage.removeItem('timerGuess');
-      sessionStorage.removeItem('timerAnswer');
       resetData();
       navigate('/');
     } catch (error) {

@@ -67,13 +67,11 @@ function CountdownTimer({
       if (seconds === 0) {
         try {
           await leaveGame(playerId, gameData.id);
-          sessionStorage.removeItem('timerCounter');
           resetData();
           navigate(INACTIVE);
         } catch (error) {
           //to do: handle errors
         }
-        // setSeconds(time);
       }
     }
     leaveResetData();
