@@ -9,15 +9,57 @@ import GameDataContext from '../../../contexts/game-data-context';
 import { leaveGame } from '../../../services/games-service';
 import useTimer from '../../../hooks/useTimer';
 
-function CountdownTimer({ inLobby, time, small, timeClassName, paused }) {
+function CountdownTimer({
+  inLobby,
+  time,
+  small,
+  timeClassName,
+  paused,
+  disableSessionTracker,
+}) {
   const { gameData, resetData, playerId } = useContext(GameDataContext);
   const [seconds, setSeconds] = useState(time);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (disableSessionTracker) {
+      return;
+    }
+    const sessionTimer = sessionStorage.getItem('timer');
+
+    if (sessionTimer) {
+      const { seconds, time } = JSON.parse(sessionTimer);
+      const diff = new Date().getTime() - time;
+      const result = seconds - Math.floor(diff / 1000);
+
+      setSeconds(result > 0 ? result : 0);
+      sessionStorage.removeItem('timer');
+    }
+
+    function onBeforeUnload(e) {
+      setSeconds((seconds) => {
+        sessionStorage.setItem(
+          'timer',
+          JSON.stringify({ seconds, time: new Date().getTime() })
+        );
+
+        return seconds;
+      });
+    }
+
+    window.addEventListener('beforeunload', onBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', onBeforeUnload);
+    };
+  }, [disableSessionTracker]);
+
   useTimer(() => {
+    if (paused || seconds === 0) {
+      return;
+    }
+
     setSeconds((seconds) => seconds - 1);
-    sessionStorage.setItem('timerCounter', seconds - 1);
-    sessionStorage.setItem('timerGuess', seconds - 1);
-    sessionStorage.setItem('timerAnswer', seconds - 1);
   });
 
   useEffect(() => {
@@ -26,13 +68,12 @@ function CountdownTimer({ inLobby, time, small, timeClassName, paused }) {
         try {
           await leaveGame(playerId, gameData.id);
           sessionStorage.removeItem('timerCounter');
-          sessionStorage.removeItem('timerGuess');
-          sessionStorage.removeItem('timerAnswer');
           resetData();
           navigate(INACTIVE);
         } catch (error) {
           //to do: handle errors
         }
+        // setSeconds(time);
       }
     }
     leaveResetData();

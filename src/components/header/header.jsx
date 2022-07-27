@@ -13,7 +13,6 @@ function Header({ type, lobby, startGame }) {
   const [leaveModalActive, setLeaveModalActive] = useState(false);
   const [createModalActive, setCreateModalActive] = useState(false);
   const navigate = useNavigate();
-  const time = sessionStorage.getItem('timerCounter') || 120;
   const createNewLobbySubmit = (event) => {
     event.preventDefault();
     setCreateModalActive(false);
@@ -29,7 +28,7 @@ function Header({ type, lobby, startGame }) {
           <div className="game-header__timer-wrapper">
             <CountdownTimer
               inLobby={clsx({ 'in-lobby': type === 'game-lobby' })}
-              time={time}
+              time={120}
             />
           </div>
         </>

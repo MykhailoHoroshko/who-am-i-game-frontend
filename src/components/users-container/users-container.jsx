@@ -6,16 +6,6 @@ import { useContext } from 'react';
 
 function UsersContainer({ mode, currentPlayer, players }) {
   const modalActive = useContext(ModalContext)[0];
-  const getGuessTime = sessionStorage.getItem('timerGuess');
-  const getAnswerTime = sessionStorage.getItem('timerAnswer');
-  let timeGuess;
-  let timeAnswer;
-  getGuessTime > 0
-    ? (timeGuess = sessionStorage.getItem('timerGuess'))
-    : (timeGuess = 20);
-  getAnswerTime > 0
-    ? (timeAnswer = sessionStorage.getItem('timerAnswer'))
-    : (timeAnswer = 60);
 
   return (
     <div className="users">
@@ -23,7 +13,7 @@ function UsersContainer({ mode, currentPlayer, players }) {
         <p className="users__turn">TURN TIME</p>
         <CountdownTimer
           small={'v-small'}
-          time={mode === 'guess' || mode === 'answer' ? timeAnswer : timeGuess}
+          time={mode === 'guess' || mode === 'answer' ? 20 : 60}
           paused={modalActive}
         />
       </div>
