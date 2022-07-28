@@ -52,7 +52,7 @@ function Homepage() {
     <ScreenWrapper>
       <GameTitle />
       <PlayersOnlineTitle />
-      {isLoggedIn ? (
+      {!isLoggedIn ? (
         <AfterLogin createGame={onCreateGame} />
       ) : (
         <BeforeLogin createGame={onCreateGame} />
